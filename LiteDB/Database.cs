@@ -8,15 +8,28 @@ namespace LiteDB_Class
         public static LiteDatabase OpenOrCreateDatabase()
         {
             // Open database (or create if doesn't exist)
-            var db = new LiteDatabase(@"C:\Temp\MyData.db");
+            var db = new LiteDatabase(@"C:\Temp\MyData1.db");
             return db;
         }
 
-        public  static ILiteCollection<Customer> GetOrCreateCollection(LiteDatabase database)
+        public static ILiteCollection<Veranstaltung> GetOrCreateVeranstaltungsCollection(LiteDatabase database)
         {
-            var col = database.GetCollection<Customer>("customers");
+            var col = database.GetCollection<Veranstaltung>("Veranstaltung");
             return col;
         }
+        public static ILiteCollection<Teilnehmer> GetOrCreateTeilnehmerCollection(LiteDatabase database)
+        {
+            var col = database.GetCollection<Teilnehmer>("Teilnehmer");
+            return col;
+        }
+        public static ILiteCollection<TriggerTimes> GetOrCreateTriggerTimesCollection(LiteDatabase database)
+        {
+            var col = database.GetCollection<TriggerTimes>("TriggerTimes");
+            return col;
+        }
+
+
+
         public static void InitDb()
         {
             // Open database (or create if doesn't exist)

@@ -8,22 +8,44 @@ namespace Types
 {
     public class Teilnehmer : ITeilnehmer
     {
-        private int _id;
+        private string _id;
         private string _teilnehmerName;
-        private DateTime _geburtsDatum;
-        private IEnumerable<ITriggerTimes> _racersTriggerTimes;
+        private int _jahrgang;
+        private List<ITriggerTimes> _racersTriggerTimes;
+        private int _startnummer;
+
+        public int startnummer
+        {
+            get { return _startnummer; }
+            set { _startnummer = value; }
+        }
+
+        public Teilnehmer(string teilnehmrName, int jahrgang, int startnummer)
+        {
+            _id = Guid.NewGuid().ToString();
+            _teilnehmerName = teilnehmrName;
+            _jahrgang = jahrgang;
+            _startnummer = startnummer;
+            _racersTriggerTimes = new List<ITriggerTimes>();
+        }
+        public Teilnehmer(string teilnehmrName, int jahrgang)
+        {
+            _id =  Guid.NewGuid().ToString();
+            _teilnehmerName = teilnehmrName;
+            _jahrgang = jahrgang;
+            _racersTriggerTimes = new List<ITriggerTimes>();
+        }
 
         public IEnumerable<ITriggerTimes> racersTriggerTimes
         {
             get { return _racersTriggerTimes; }
-            set { _racersTriggerTimes = value; }
         }
 
 
-        public DateTime geburtsDatum
+        public int jahrgang
         {
-            get { return _geburtsDatum; }
-            set { _geburtsDatum = value; }
+            get { return _jahrgang; }
+            set { _jahrgang = value; }
         }
 
 
@@ -34,11 +56,18 @@ namespace Types
         }
 
 
-        public int id
+        public string id
         {
             get { return _id; }
             set { _id = value; }
         }
+
+        public void AddTriggerTime(DateTime triggerTime, string channel)
+        {
+            var newTriggerTime = new TriggerTimes{ triggerTime = triggerTime, channel = channel };
+            _racersTriggerTimes.Add(newTriggerTime);
+        }
+
 
     }
 }

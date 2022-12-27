@@ -2,10 +2,11 @@
 {
     public interface ITeilnehmer
     {
-        int id { get; set;  }
+        string id { get; set;  }
         string teilnehmerName { get; set;  }
-        DateTime geburtsDatum { get; set;  }
-        IEnumerable<ITriggerTimes> racersTriggerTimes { get; set;  }
+        int jahrgang { get; set;  }
+        int startnummer { get; set; }
+        IEnumerable<ITriggerTimes> racersTriggerTimes { get; }
         
     }
 }

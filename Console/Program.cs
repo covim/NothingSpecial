@@ -15,28 +15,40 @@ namespace Console
             var veranstaltung1 = new Veranstaltung("SuperVeranstaltung", "Reuthe");
             System.Console.WriteLine(veranstaltung1.veranstaltungsName);
 
-            veranstaltung1.veranstaltungsName = "SuperDuperVeranstaltung";
-            System.Console.WriteLine(veranstaltung1.veranstaltungsName);
+            var teilNehmer1 = new Teilnehmer("Matthias", 1983, 2);
+            veranstaltung1.AddTeilnehmer(teilNehmer1);
+            var teilNehmer2 = new Teilnehmer("Susanne", 1981, 1);
+            veranstaltung1.AddTeilnehmer(teilNehmer2);
+            teilNehmer2.AddTriggerTime(DateTime.Now, "Ch1");
+            teilNehmer2.AddTriggerTime(DateTime.Now, "Ch2");
 
-            //var database = Database.OpenOrCreateDatabase();
-            //var collection = Database.GetOrCreateCollection(database);
-            //var collection2 = Database.GetOrCreateCollection(database);
+            var triggerTime1 = new TriggerTimes();
+            triggerTime1.startnummer = 1;
+            triggerTime1.status = "valid";
+            triggerTime1.channel = "CH1";
+            triggerTime1.triggerTime = DateTime.Now;
 
-            //var cu1 = new Customer { Id = Guid.NewGuid().ToString(), Name = "Susanne", Phones = new string[] { "2433", "2265" } };
-            //collection.Insert(cu1);
+            var database = Database.OpenOrCreateDatabase();
+            var veranstaltungsCollection = Database.GetOrCreateVeranstaltungsCollection(database);
+            var teilnehmerCollection = Database.GetOrCreateTeilnehmerCollection(database);
+            var triggerTimesCollection = Database.GetOrCreateTriggerTimesCollection(database);
 
-            //var cu2 = new Customer();
-            //cu2 = collection.FindOne(x => x.Name == "Susanne");
-            //cu2.Id = Guid.NewGuid().ToString();
-            //collection.Insert(cu2);
+            veranstaltungsCollection.Insert(veranstaltung1);
+            teilnehmerCollection.Insert(teilNehmer1);
+            teilnehmerCollection.Insert(teilNehmer2);
+            triggerTimesCollection.Insert(triggerTime1);
 
-            //System.Console.WriteLine();
-            //System.Console.WriteLine("die gesuchten Nummern lauten:");
-            //for (int i = 0; i < cu2.Phones.Length; i++)
-            //{
-            //    System.Console.WriteLine(cu2.Phones[i]);
-            //}
 
+
+
+            foreach (var teilnehmer in veranstaltung1.teilnehmerListe)
+            {
+                System.Console.WriteLine(teilnehmer.teilnehmerName + " Jahrgang:" + teilnehmer.jahrgang.ToString());
+                foreach (var triggerTime in teilnehmer.racersTriggerTimes)
+                {
+                    System.Console.WriteLine($"{triggerTime.channel} at {triggerTime.triggerTime.ToString("dd.MM.yyyy HH:mm:ss.fffffff")}");
+                }
+            }
         }
 
     }

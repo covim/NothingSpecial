@@ -1,11 +1,13 @@
-﻿namespace Types
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Types
 {
     public class Veranstaltung : IVeranstaltung
     {
         private string _veranstaltungsName;
         private string _veranstaltungsOrt;
         private DateTime _veranstaltungsDatum;
-        private IEnumerable<ITeilnehmer> _teilnehmerListe;
+        private List<ITeilnehmer> _teilnehmerListe;
 
         public Veranstaltung(string veranstaltungsName, string veranstaltungsOrt)
         {
@@ -33,17 +35,25 @@
         public IEnumerable<ITeilnehmer> teilnehmerListe
         {
             get => _teilnehmerListe;
-            set => _teilnehmerListe = value;
         }
 
         public void AddTeilnehmer(ITeilnehmer neuerTeilnehmer)
         {
-            _teilnehmerListe.Append(neuerTeilnehmer);
+            if (neuerTeilnehmer != null)
+            {
+                _teilnehmerListe.Add(neuerTeilnehmer);
+            }
         }
 
-        public void RemoveTeilnehmer(ITeilnehmer TeilnehmerToRemove)
+        public void RemoveTeilnehmer(string teilnehmerId)
         {
-            _teilnehmerListe.ToList<ITeilnehmer>().Remove(TeilnehmerToRemove);
+
+            var teilnehmerToRemove = _teilnehmerListe.FirstOrDefault(x => x.id == teilnehmerId);
+            if (teilnehmerToRemove != null)
+            {
+                _teilnehmerListe.Remove(teilnehmerToRemove);
+            }
+
         }
     }
 }
