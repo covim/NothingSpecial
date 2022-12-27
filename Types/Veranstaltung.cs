@@ -4,6 +4,7 @@ namespace Types
 {
     public class Veranstaltung : IVeranstaltung
     {
+        private int _id;
         private string _veranstaltungsName;
         private string _veranstaltungsOrt;
         private DateTime _veranstaltungsDatum;
@@ -11,10 +12,17 @@ namespace Types
 
         public Veranstaltung(string veranstaltungsName, string veranstaltungsOrt)
         {
+            _id = 1;
             _veranstaltungsName = veranstaltungsName;
             _veranstaltungsOrt = veranstaltungsOrt;
             _veranstaltungsDatum = DateTime.Today;
             _teilnehmerListe = new List<ITeilnehmer>();
+        }
+
+        public int id
+        {
+            get => _id;
+            
         }
 
         public string veranstaltungsName

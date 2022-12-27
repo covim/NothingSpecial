@@ -22,11 +22,7 @@ namespace Console
             teilNehmer2.AddTriggerTime(DateTime.Now, "Ch1");
             teilNehmer2.AddTriggerTime(DateTime.Now, "Ch2");
 
-            var triggerTime1 = new TriggerTimes();
-            triggerTime1.startnummer = 1;
-            triggerTime1.status = "valid";
-            triggerTime1.channel = "CH1";
-            triggerTime1.triggerTime = DateTime.Now;
+
 
             var database = Database.OpenOrCreateDatabase();
             var veranstaltungsCollection = Database.GetOrCreateVeranstaltungsCollection(database);
@@ -34,9 +30,11 @@ namespace Console
             var triggerTimesCollection = Database.GetOrCreateTriggerTimesCollection(database);
 
             veranstaltungsCollection.Insert(veranstaltung1);
-            teilnehmerCollection.Insert(teilNehmer1);
-            teilnehmerCollection.Insert(teilNehmer2);
-            triggerTimesCollection.Insert(triggerTime1);
+
+            teilNehmer2.AddTriggerTime(DateTime.Now, "Ch3");
+
+            veranstaltungsCollection.Update(veranstaltung1);
+
 
 
 
