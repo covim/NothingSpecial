@@ -17,16 +17,7 @@ namespace LiteDB_Class
             var col = database.GetCollection<Veranstaltung>("Veranstaltung");
             return col;
         }
-        public static ILiteCollection<Teilnehmer> GetOrCreateTeilnehmerCollection(LiteDatabase database)
-        {
-            var col = database.GetCollection<Teilnehmer>("Teilnehmer");
-            return col;
-        }
-        public static ILiteCollection<TriggerTimes> GetOrCreateTriggerTimesCollection(LiteDatabase database)
-        {
-            var col = database.GetCollection<TriggerTimes>("TriggerTimes");
-            return col;
-        }
+
 
 
 

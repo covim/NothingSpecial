@@ -22,7 +22,6 @@ namespace Types
         public int id
         {
             get => _id;
-            
         }
 
         public string veranstaltungsName

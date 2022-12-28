@@ -36,7 +36,7 @@ namespace Types
             _racersTriggerTimes = new List<ITriggerTimes>();
         }
 
-        public IEnumerable<ITriggerTimes> racersTriggerTimes
+        public IEnumerable<ITriggerTimes> teilnehmerTriggerTimes
         {
             get { return _racersTriggerTimes; }
         }

@@ -6,7 +6,7 @@
         string teilnehmerName { get; set;  }
         int jahrgang { get; set;  }
         int startnummer { get; set; }
-        IEnumerable<ITriggerTimes> racersTriggerTimes { get; }
+        IEnumerable<ITriggerTimes> teilnehmerTriggerTimes { get; }
         
     }
 }
