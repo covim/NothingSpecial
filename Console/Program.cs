@@ -18,7 +18,7 @@ namespace Console
             System.IO.File.Delete(@"C:\Temp\MyData1.db");
             System.IO.File.Delete(@"C:\Temp\MyData1-log.db");
 
-            JustReadCom();
+            //JustReadCom();
 
 
             var veranstaltung1 = GenerateDemoVeranstaltung();

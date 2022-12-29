@@ -5,11 +5,7 @@ namespace TDC8001
 {
     public class TDC8000Parser
     {
-        public int Id { get; set; }
-        public string Channel { get; set; }
-        public DateTime TriggerTime { get; set; }
-        public int Startnummer { get; set; }
-        public string Status { get; set; }
+
 
         public static TriggerTimes TDC8000StringToTriggerTimes(string stringFromStopWatch)
         {
