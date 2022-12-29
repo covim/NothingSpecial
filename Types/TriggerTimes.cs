@@ -6,35 +6,12 @@ using System.Threading.Tasks;
 
 namespace Types
 {
-    public class TriggerTimes : ITriggerTimes
+    public class TriggerTimes
     {
-        private string _channel;
-        private DateTime _triggerTime;
-        private int _startnummer;
-        private string _status;
-
-        public string status
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
-
-        public int startnummer
-        {
-            get { return _startnummer; }
-            set { _startnummer = value; }
-        }
-
-        public DateTime triggerTime
-        {
-            get { return _triggerTime; }
-            set { _triggerTime = value; }
-        }
-
-        public string channel
-        {
-            get { return _channel; }
-            set { _channel = value; }
-        }
+        public int Id { get; set; } 
+        public string Channel { get; set; }
+        public DateTime TriggerTime { get; set; }
+        public int Startnummer { get; set; }
+        public string Status { get; set; }
     }
 }

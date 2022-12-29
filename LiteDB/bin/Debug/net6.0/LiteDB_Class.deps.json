@@ -24,6 +24,9 @@
         }
       },
       "Types/1.0.0": {
+        "dependencies": {
+          "LiteDB": "5.0.15"
+        },
         "runtime": {
           "Types.dll": {}
         }

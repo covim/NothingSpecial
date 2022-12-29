@@ -6,68 +6,34 @@ using System.Threading.Tasks;
 
 namespace Types
 {
-    public class Teilnehmer : ITeilnehmer
+    public class Teilnehmer
     {
-        private string _id;
-        private string _teilnehmerName;
-        private int _jahrgang;
-        private List<ITriggerTimes> _racersTriggerTimes;
-        private int _startnummer;
+        public int Id { get; set; }
+        public string TeilnehmerName { get; set; }
+        public int Jahrgang { get; set; }
+        public int Startnummer { get; set; }
+        public List<TimeSpan> TeilnehmerRaceTimes { get; set; } = new List<TimeSpan>();
 
-        public int startnummer
+        public static void UpdateRaceTimes(List<TriggerTimes> triggerTimes, List<Teilnehmer> teilnehmers)
         {
-            get { return _startnummer; }
-            set { _startnummer = value; }
+            var ZielZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C1") && x.Status == "normal").ToList();
+            var StartZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C0") && x.Status == "normal").ToList();
+
+            foreach (var teilnehmer in teilnehmers)
+            {
+                var startnummer = teilnehmer.Startnummer;
+                var zielzeitFuerStartnummer = ZielZeiten.FindAll(x => x.Startnummer == startnummer);
+                var startzeitfuerStartnummer = StartZeiten.FindAll(x => x.Startnummer == startnummer);
+
+                if (zielzeitFuerStartnummer.Count == 1 && startzeitfuerStartnummer.Count == 1)
+                {
+                    var raceTime = new TimeSpan();
+                    raceTime = zielzeitFuerStartnummer[0].TriggerTime - startzeitfuerStartnummer[0].TriggerTime;
+                    teilnehmer.TeilnehmerRaceTimes.Add(raceTime);
+                }
+            }
+
+
         }
-
-        public Teilnehmer(string teilnehmrName, int jahrgang, int startnummer)
-        {
-            _id = Guid.NewGuid().ToString();
-            _teilnehmerName = teilnehmrName;
-            _jahrgang = jahrgang;
-            _startnummer = startnummer;
-            _racersTriggerTimes = new List<ITriggerTimes>();
-        }
-        public Teilnehmer(string teilnehmrName, int jahrgang)
-        {
-            _id =  Guid.NewGuid().ToString();
-            _teilnehmerName = teilnehmrName;
-            _jahrgang = jahrgang;
-            _racersTriggerTimes = new List<ITriggerTimes>();
-        }
-
-        public IEnumerable<ITriggerTimes> teilnehmerTriggerTimes
-        {
-            get { return _racersTriggerTimes; }
-        }
-
-
-        public int jahrgang
-        {
-            get { return _jahrgang; }
-            set { _jahrgang = value; }
-        }
-
-
-        public string teilnehmerName
-        {
-            get { return _teilnehmerName; }
-            set { _teilnehmerName = value; }
-        }
-
-
-        public string id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        public void AddTriggerTime(DateTime triggerTime, string channel)
-        {
-            var newTriggerTime = new TriggerTimes{ triggerTime = triggerTime, channel = channel };
-            _racersTriggerTimes.Add(newTriggerTime);
-        }
-
-
     }
 }

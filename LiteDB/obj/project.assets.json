@@ -18,6 +18,9 @@
       "Types/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "LiteDB": "5.0.15"
+        },
         "compile": {
           "bin/placeholder/Types.dll": {}
         },
