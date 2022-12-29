@@ -1,0 +1,12 @@
+C:\myCode\Repos\NothingSpecial\Types\bin\Debug\net6.0\Types.deps.json
+C:\myCode\Repos\NothingSpecial\Types\bin\Debug\net6.0\Types.dll
+C:\myCode\Repos\NothingSpecial\Types\bin\Debug\net6.0\Types.pdb
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.csproj.AssemblyReference.cache
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.GeneratedMSBuildEditorConfig.editorconfig
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.AssemblyInfoInputs.cache
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.AssemblyInfo.cs
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.csproj.CoreCompileInputs.cache
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.dll
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\refint\Types.dll
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.pdb
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\ref\Types.dll

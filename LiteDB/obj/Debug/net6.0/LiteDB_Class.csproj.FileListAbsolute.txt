@@ -1,0 +1,15 @@
+C:\myCode\Repos\NothingSpecial\LiteDB\bin\Debug\net6.0\LiteDB_Class.deps.json
+C:\myCode\Repos\NothingSpecial\LiteDB\bin\Debug\net6.0\LiteDB_Class.dll
+C:\myCode\Repos\NothingSpecial\LiteDB\bin\Debug\net6.0\LiteDB_Class.pdb
+C:\myCode\Repos\NothingSpecial\LiteDB\bin\Debug\net6.0\Types.dll
+C:\myCode\Repos\NothingSpecial\LiteDB\bin\Debug\net6.0\Types.pdb
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.csproj.AssemblyReference.cache
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.GeneratedMSBuildEditorConfig.editorconfig
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.AssemblyInfoInputs.cache
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.AssemblyInfo.cs
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.csproj.CoreCompileInputs.cache
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.csproj.CopyComplete
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.dll
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\refint\LiteDB_Class.dll
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.pdb
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\ref\LiteDB_Class.dll

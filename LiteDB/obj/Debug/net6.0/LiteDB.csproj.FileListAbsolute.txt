@@ -1,0 +1,5 @@
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB.csproj.AssemblyReference.cache
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB.GeneratedMSBuildEditorConfig.editorconfig
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB.AssemblyInfoInputs.cache
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB.AssemblyInfo.cs
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB.csproj.CoreCompileInputs.cache
