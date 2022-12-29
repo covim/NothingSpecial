@@ -17,22 +17,33 @@ namespace Console
             System.Console.WriteLine("Hello, World!");
             System.IO.File.Delete(@"C:\Temp\MyData1.db");
             System.IO.File.Delete(@"C:\Temp\MyData1-log.db");
+            int racerOnTrack = 0;
 
             //JustReadCom();
 
 
             var veranstaltung1 = GenerateDemoVeranstaltung();
+            var Tdc8000 = new TDC8000Parser();
 
             SerialPort port = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
             port.Open();
-            for (int i = 0; i < 2; i++)
+            //for (int i = 0; i < 2; i++)
+            while(true)
             {
-                System.Console.WriteLine(i);
+                //System.Console.WriteLine(i);
                 var stringFromStopwatch = port.ReadTo("\r");
                 System.Console.WriteLine(stringFromStopwatch);
-                var newTriggerTime = TDC8000Parser.TDC8000StringToTriggerTimes(stringFromStopwatch);
-                veranstaltung1.TriggerTimesListe.Add(newTriggerTime);
-                
+                if (Tdc8000.TDC8000ParseManager(stringFromStopwatch)) 
+                {
+                    veranstaltung1.TriggerTimesListe.Add(Tdc8000.AktuelleTriggerZeit);
+                    veranstaltung1.ToString();
+                    System.Console.WriteLine("Eingelesene Zeit: " + Tdc8000.AktuelleTriggerZeit.TriggerTime.ToString("HH:mm:ss.ffff"));
+                }
+                else 
+                { 
+                    racerOnTrack = Tdc8000.NextRacerToFinish;
+                    System.Console.WriteLine("Nächster Läufer im Ziel: " + racerOnTrack.ToString());
+                }        
             }
 
             port.Close();

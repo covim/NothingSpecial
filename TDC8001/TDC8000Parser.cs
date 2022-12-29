@@ -5,9 +5,29 @@ namespace TDC8001
 {
     public class TDC8000Parser
     {
+        public int NextRacerToFinish { get; private set; }
+        public TriggerTimes AktuelleTriggerZeit { get; private set; }
+        public bool TDC8000ParseManager(string stringFromStopWatch)
+        {
+            if (stringFromStopWatch.StartsWith("n"))
+            {
+                NextRacerToFinish = TDC8000StringToNextRacerToFinish(stringFromStopWatch);
+                return false;
+            }
+            else
+            {
+                AktuelleTriggerZeit = TDC8000StringToTriggerTimes(stringFromStopWatch);
+                return true;
+            }
+        }
 
+        private static int TDC8000StringToNextRacerToFinish(string stringFromStopWatch)
+        {
+            int returnStartnummer = int.Parse(stringFromStopWatch.Replace('n','0'));
+            return returnStartnummer;
+        }
 
-        public static TriggerTimes TDC8000StringToTriggerTimes(string stringFromStopWatch)
+        private static TriggerTimes TDC8000StringToTriggerTimes(string stringFromStopWatch)
         {
             var returnTriggerTime = new TriggerTimes();
 
@@ -51,20 +71,18 @@ namespace TDC8001
             {
                 returnTriggerTime.Status = "deleted_Time";
             }
+            else if (stringFromStopWatch.StartsWith("i"))
+            {
+                returnTriggerTime.Status = "manipulated_time";
+            }
             else { return null; }
 
 
             subStrings = stringFromStopWatchWithoutFirst.Split(" ", 6);
             returnTriggerTime.Startnummer = int.Parse(subStrings[0]);
             returnTriggerTime.Channel = subStrings[1];
-            if (subStrings[1].EndsWith("M"))
-            {
-                returnTriggerTime.TriggerTime = DateTime.ParseExact(subStrings[2], "HH:mm:ss.ffff", System.Globalization.CultureInfo.InvariantCulture);
-            }
-            else
-            {
-                returnTriggerTime.TriggerTime = DateTime.ParseExact(subStrings[3], "hh:MM:ss.ffff", System.Globalization.CultureInfo.InvariantCulture);
-            }
+            returnTriggerTime.TriggerTime = DateTime.ParseExact(stringFromStopWatch.Remove(22,3).Substring(10), "HH:mm:ss.ffff", System.Globalization.CultureInfo.InvariantCulture);
+
 
             return returnTriggerTime;
         }
