@@ -1,12 +1,15 @@
 ﻿using System.Globalization;
+using System.IO.Ports;
+using System.Security.Cryptography.X509Certificates;
 using Types;
 
-namespace TDC8001
+namespace TDC8000
 {
     public class TDC8000Parser
     {
-        public int NextRacerToFinish { get; private set; }
-        public TriggerTimes AktuelleTriggerZeit { get; private set; }
+        public int NextRacerToFinish { get; private set; } = 0;
+        public TriggerTimes AktuelleTriggerZeit { get; private set; } = new TriggerTimes();
+        public string StringFromStopwatch { get; private set; } = string.Empty;
         public bool TDC8000ParseManager(string stringFromStopWatch)
         {
             if (stringFromStopWatch.StartsWith("n"))
@@ -86,5 +89,6 @@ namespace TDC8001
 
             return returnTriggerTime;
         }
+
     }
 }

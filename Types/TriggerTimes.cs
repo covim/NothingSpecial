@@ -10,7 +10,7 @@ namespace Types
     {
         public int Id { get; set; } 
         public string Channel { get; set; }
-        public DateTime TriggerTime { get; set; }
+        public DateTime TriggerTime { get; set; } = new DateTime(2000, 1, 1, 00, 00, 00);
         public int Startnummer { get; set; }
         public string Status { get; set; }
     }

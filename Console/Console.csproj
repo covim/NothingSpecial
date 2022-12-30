@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LiteDB\LiteDB_Class.csproj" />
-    <ProjectReference Include="..\TDC8001\TDC8001.csproj" />
+    <ProjectReference Include="..\TDC8001\TDC8000.csproj" />
     <ProjectReference Include="..\Types\Types.csproj" />
   </ItemGroup>
 

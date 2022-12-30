@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO.Ports;
 using System.Xml;
 using System.Xml.Xsl;
-using TDC8001;
+using TDC8000;
 using Types;
 
 namespace Console

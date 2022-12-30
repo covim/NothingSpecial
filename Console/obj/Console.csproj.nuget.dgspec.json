@@ -36,8 +36,8 @@
               "C:\\myCode\\Repos\\NothingSpecial\\LiteDB\\LiteDB_Class.csproj": {
                 "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\LiteDB\\LiteDB_Class.csproj"
               },
-              "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8001.csproj": {
-                "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8001.csproj"
+              "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8000.csproj": {
+                "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8000.csproj"
               },
               "C:\\myCode\\Repos\\NothingSpecial\\Types\\Types.csproj": {
                 "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\Types\\Types.csproj"
@@ -158,12 +158,12 @@
         }
       }
     },
-    "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8001.csproj": {
+    "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8000.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8001.csproj",
-        "projectName": "TDC8001",
-        "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8001.csproj",
+        "projectUniqueName": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8000.csproj",
+        "projectName": "TDC8000",
+        "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8000.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\obj\\",
         "projectStyle": "PackageReference",
@@ -202,6 +202,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
