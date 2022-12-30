@@ -7,6 +7,7 @@ namespace TDC8000
 {
     public class TDC8000Parser
     {
+        public static int Id { get; private set; } = 1;
         public int NextRacerToFinish { get; private set; } = 0;
         public TriggerTimes AktuelleTriggerZeit { get; private set; } = new TriggerTimes();
         public string StringFromStopwatch { get; private set; } = string.Empty;
@@ -80,12 +81,12 @@ namespace TDC8000
             }
             else { return null; }
 
-
+            returnTriggerTime.Id = Id;
             subStrings = stringFromStopWatchWithoutFirst.Split(" ", 6);
             returnTriggerTime.Startnummer = int.Parse(subStrings[0]);
             returnTriggerTime.Channel = subStrings[1];
             returnTriggerTime.TriggerTime = DateTime.ParseExact(stringFromStopWatch.Remove(22,3).Substring(10), "HH:mm:ss.ffff", System.Globalization.CultureInfo.InvariantCulture);
-
+            Id++;
 
             return returnTriggerTime;
         }

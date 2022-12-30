@@ -99,6 +99,20 @@
           }
         }
       },
+      "LiteDB_Class/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "LiteDB": "5.0.15",
+          "Types": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LiteDB_Class.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LiteDB_Class.dll": {}
+        }
+      },
       "TDC8000/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -279,6 +293,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "LiteDB_Class/1.0.0": {
+      "type": "project",
+      "path": "../LiteDB/LiteDB_Class.csproj",
+      "msbuildProject": "../LiteDB/LiteDB_Class.csproj"
+    },
     "TDC8000/1.0.0": {
       "type": "project",
       "path": "../TDC8001/TDC8000.csproj",
@@ -292,6 +311,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "LiteDB_Class >= 1.0.0",
       "System.IO.Ports >= 7.0.0",
       "TDC8000 >= 1.0.0"
     ]
@@ -329,6 +349,9 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
+            "C:\\myCode\\Repos\\NothingSpecial\\LiteDB\\LiteDB_Class.csproj": {
+              "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\LiteDB\\LiteDB_Class.csproj"
+            },
             "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8000.csproj": {
               "projectPath": "C:\\myCode\\Repos\\NothingSpecial\\TDC8001\\TDC8000.csproj"
             }
