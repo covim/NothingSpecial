@@ -40,14 +40,14 @@ namespace DesktopApp
 
         private void ReadSerialPort(object sender, DoWorkEventArgs e)
         {
-            BackgroundWorker worker = sender as BackgroundWorker;
+            BackgroundWorker worker1 = sender as BackgroundWorker;
             SerialPort port = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
             port.Open();
             while (run)
             {
                 string data = port.ReadTo("\r");
                 // Report progress to the UI
-                worker.ReportProgress(0, data);
+                worker1.ReportProgress(0, data);
             }
             port.Close();
         }
