@@ -23,7 +23,7 @@ namespace DesktopApp
         ILiteCollection<Veranstaltung> col;
         IEnumerable<TriggerTimes> triggerTimesList;
         bool eins = false;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +35,8 @@ namespace DesktopApp
             db = new LiteDatabase(@"C:\Temp\MyData1.db");
             col = db.GetCollection<Veranstaltung>("Veranstaltung");
             Database.SaveDataToDB(veranstaltung1, col);
-            textBox1.Enabled= false;
+            textBox1.Enabled = false;
+            
         }
 
         private void ReadSerialPort(object sender, DoWorkEventArgs e)
@@ -63,12 +64,14 @@ namespace DesktopApp
                 veranstaltung1.TriggerTimesListe.Add(tdc8000.AktuelleTriggerZeit);
                 col.Update(veranstaltung1);
                 //triggerTimesList = col.Query().ToList()[0].TriggerTimesListe;
-                if (!eins)
-                {
-                    dataGridView1.DataSource = veranstaltung1.TriggerTimesListe;
-                    dataGridView1.AutoGenerateColumns = true;
-                    eins = true;
-                }
+
+                dataGridView1.DataSource = 1;
+                dataGridView1.DataSource = veranstaltung1.TriggerTimesListe;
+                triggerTimesList = col.Query().ToList()[0].TriggerTimesListe;
+                dataGridView1.AutoGenerateColumns = true;
+                dataGridView1.Columns[3].DefaultCellStyle.Format = @"hh\:mm\:ss\.ffff";
+
+
 
             }
             else
@@ -86,16 +89,7 @@ namespace DesktopApp
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_TdC8000_Read.Checked)
@@ -119,9 +113,6 @@ namespace DesktopApp
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
     }
 }
