@@ -31,3 +31,4 @@ C:\myCode\Repos\NothingSpecial\DesktopApp\bin\Debug\net6.0-windows\TDC8000.pdb
 C:\myCode\Repos\NothingSpecial\DesktopApp\bin\Debug\net6.0-windows\Types.pdb
 C:\myCode\Repos\NothingSpecial\DesktopApp\bin\Debug\net6.0-windows\LiteDB_Class.dll
 C:\myCode\Repos\NothingSpecial\DesktopApp\bin\Debug\net6.0-windows\LiteDB_Class.pdb
+C:\myCode\Repos\NothingSpecial\DesktopApp\obj\Debug\net6.0-windows\DesktopApp.frm_NeueVeranstaltung.resources

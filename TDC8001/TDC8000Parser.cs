@@ -25,6 +25,15 @@ namespace TDC8000
             }
         }
 
+        public TDC8000Parser()
+        {
+
+        }
+
+        public TDC8000Parser(int nextIdToPopulate)
+        {
+            Id = nextIdToPopulate;
+        }
         private static int TDC8000StringToNextRacerToFinish(string stringFromStopWatch)
         {
             int returnStartnummer = int.Parse(stringFromStopWatch.Replace('n', '0'));
