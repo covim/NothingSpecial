@@ -17,6 +17,8 @@ namespace DesktopApp
         ILiteCollection<Veranstaltung> _col;
         IEnumerable<TriggerTimes> triggerTimesList;
         frm_neueVeranstaltung neueVeranstaltungsDaten;
+        string selectedComPort = string.Empty;
+
 
         public Form1()
         {
@@ -31,13 +33,14 @@ namespace DesktopApp
             //Database.SaveDataToDB(veranstaltung1, _col);
             textBox1.Enabled = false;
             neueVeranstaltungsDaten = new frm_neueVeranstaltung();
+            comboBox1.DataSource = SerialPort.GetPortNames();
 
         }
 
         private void ReadSerialPort(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker1 = sender as BackgroundWorker;
-            SerialPort port = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+            SerialPort port = new SerialPort(selectedComPort, 9600, Parity.None, 8, StopBits.One);
             port.Open();
             while (run)
             {
@@ -164,8 +167,17 @@ namespace DesktopApp
             triggerTimesList = _col.Query().ToList()[0].TriggerTimesListe;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.Columns[3].DefaultCellStyle.Format = @"hh\:mm\:ss\.ffff";
+            dataGridView1.Columns[2].DefaultCellStyle.Format = "dd.MM.yyyy hh:mm:ss.ffff";
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                dataGridView1.AutoResizeColumn(i);
+            }
+            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
         }
 
-
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedComPort = comboBox1.SelectedItem.ToString();
+        }
     }
 }

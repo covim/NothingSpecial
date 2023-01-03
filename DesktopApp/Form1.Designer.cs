@@ -43,6 +43,7 @@
             this.ladenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.databaseBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,7 +75,7 @@
             // cb_TdC8000_Read
             // 
             this.cb_TdC8000_Read.AutoSize = true;
-            this.cb_TdC8000_Read.Location = new System.Drawing.Point(578, 50);
+            this.cb_TdC8000_Read.Location = new System.Drawing.Point(471, 46);
             this.cb_TdC8000_Read.Name = "cb_TdC8000_Read";
             this.cb_TdC8000_Read.Size = new System.Drawing.Size(99, 19);
             this.cb_TdC8000_Read.TabIndex = 3;
@@ -112,7 +113,7 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(853, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -128,14 +129,14 @@
             // ladenToolStripMenuItem
             // 
             this.ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
-            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.ladenToolStripMenuItem.Text = "Neu";
             this.ladenToolStripMenuItem.Click += new System.EventHandler(this.ladenToolStripMenuItem_Click);
             // 
             // ladenToolStripMenuItem1
             // 
             this.ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
-            this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
             this.ladenToolStripMenuItem1.Text = "Laden";
             this.ladenToolStripMenuItem1.Click += new System.EventHandler(this.ladenToolStripMenuItem1_Click);
             // 
@@ -148,11 +149,21 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(576, 44);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 499);
+            this.ClientSize = new System.Drawing.Size(853, 499);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cb_TdC8000_Read);
@@ -190,5 +201,6 @@
         private ToolStripMenuItem ladenToolStripMenuItem1;
         private FileSystemWatcher fileSystemWatcher1;
         private OpenFileDialog openFileDialog1;
+        private ComboBox comboBox1;
     }
 }
