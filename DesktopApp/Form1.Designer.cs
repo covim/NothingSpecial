@@ -41,6 +41,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ladenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ladenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.veranstaltungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teilnehmerVerwaltenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -110,7 +112,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.veranstaltungToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(853, 24);
@@ -139,6 +142,22 @@
             this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
             this.ladenToolStripMenuItem1.Text = "Laden";
             this.ladenToolStripMenuItem1.Click += new System.EventHandler(this.ladenToolStripMenuItem1_Click);
+            // 
+            // veranstaltungToolStripMenuItem
+            // 
+            this.veranstaltungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.teilnehmerVerwaltenToolStripMenuItem});
+            this.veranstaltungToolStripMenuItem.Name = "veranstaltungToolStripMenuItem";
+            this.veranstaltungToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.veranstaltungToolStripMenuItem.Text = "Veranstaltung";
+            this.veranstaltungToolStripMenuItem.Click += new System.EventHandler(this.veranstaltungToolStripMenuItem_Click);
+            // 
+            // teilnehmerVerwaltenToolStripMenuItem
+            // 
+            this.teilnehmerVerwaltenToolStripMenuItem.Name = "teilnehmerVerwaltenToolStripMenuItem";
+            this.teilnehmerVerwaltenToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.teilnehmerVerwaltenToolStripMenuItem.Text = "TeilnehmerVerwalten";
+            this.teilnehmerVerwaltenToolStripMenuItem.Click += new System.EventHandler(this.teilnehmerVerwaltenToolStripMenuItem_Click);
             // 
             // fileSystemWatcher1
             // 
@@ -202,5 +221,7 @@
         private FileSystemWatcher fileSystemWatcher1;
         private OpenFileDialog openFileDialog1;
         private ComboBox comboBox1;
+        private ToolStripMenuItem veranstaltungToolStripMenuItem;
+        private ToolStripMenuItem teilnehmerVerwaltenToolStripMenuItem;
     }
 }

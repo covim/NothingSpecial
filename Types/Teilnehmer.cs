@@ -16,23 +16,39 @@ namespace Types
 
         public static void UpdateRaceTimes(List<TriggerTimes> triggerTimes, List<Teilnehmer> teilnehmers)
         {
-            var ZielZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C1") && x.Status == "normal").ToList();
-            var StartZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C0") && x.Status == "normal").ToList();
+            //var zielZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C1") && x.Status == "normal").ToList();
+            //var startZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C0") && x.Status == "normal").ToList();
 
+            //foreach (var teilnehmer in teilnehmers)
+            //{
+            //    var startnummer = teilnehmer.Startnummer;
+            //    var zielzeitFuerStartnummer = zielZeiten.FindAll(x => x.Startnummer == startnummer);
+            //    var startzeitfuerStartnummer = startZeiten.FindAll(x => x.Startnummer == startnummer);
+
+            //    if (zielzeitFuerStartnummer.Count == 1 && startzeitfuerStartnummer.Count == 1)
+            //    {
+            //        var raceTime = new TimeSpan();
+            //        raceTime = zielzeitFuerStartnummer[0].TriggerTime - startzeitfuerStartnummer[0].TriggerTime;
+            //        teilnehmer.TeilnehmerRaceTimes.Add(raceTime);
+            //    }
+            //}
+
+            var alleLaufZeiten = triggerTimes.FindAll(x => x.Channel.Contains("RT") && x.Status == "normal").ToList();
             foreach (var teilnehmer in teilnehmers)
             {
-                var startnummer = teilnehmer.Startnummer;
-                var zielzeitFuerStartnummer = ZielZeiten.FindAll(x => x.Startnummer == startnummer);
-                var startzeitfuerStartnummer = StartZeiten.FindAll(x => x.Startnummer == startnummer);
 
-                if (zielzeitFuerStartnummer.Count == 1 && startzeitfuerStartnummer.Count == 1)
+                var startNummer = teilnehmer.Startnummer;
+                var laufzeit = new TimeSpan(0);
+                if (alleLaufZeiten.FindAll(x => x.Startnummer == startNummer).Count > 0)
                 {
-                    var raceTime = new TimeSpan();
-                    raceTime = zielzeitFuerStartnummer[0].TriggerTime - startzeitfuerStartnummer[0].TriggerTime;
-                    teilnehmer.TeilnehmerRaceTimes.Add(raceTime);
+                    laufzeit = alleLaufZeiten.FindAll(x => x.Startnummer == startNummer).ToList()[0].LaufZeit;
+                    teilnehmer.TeilnehmerRaceTimes.Add(laufzeit);
+                }
+                else
+                {
+                    teilnehmer.TeilnehmerRaceTimes.Add(laufzeit);
                 }
             }
-
 
         }
     }

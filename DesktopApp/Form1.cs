@@ -17,6 +17,7 @@ namespace DesktopApp
         ILiteCollection<Veranstaltung> _col;
         IEnumerable<TriggerTimes> triggerTimesList;
         frm_neueVeranstaltung neueVeranstaltungsDaten;
+        frm_TeilnehmerVerwaltung teilnehmerVerwaltung;
         string selectedComPort = string.Empty;
 
 
@@ -26,13 +27,10 @@ namespace DesktopApp
 
             worker.WorkerReportsProgress = true;
             worker.WorkerSupportsCancellation = true;
-            //System.IO.File.Delete(@"C:\Temp\MyData1.db");
-            //System.IO.File.Delete(@"C:\Temp\MyData1-log.db");
-            //_db = new LiteDatabase(@"C:\Temp\MyData1.db");
-            //_col = _db.GetCollection<Veranstaltung>("Veranstaltung");
-            //Database.SaveDataToDB(veranstaltung1, _col);
             textBox1.Enabled = false;
+            veranstaltungToolStripMenuItem.Enabled = false;
             neueVeranstaltungsDaten = new frm_neueVeranstaltung();
+            
             comboBox1.DataSource = SerialPort.GetPortNames();
 
         }
@@ -133,13 +131,14 @@ namespace DesktopApp
             Database.SaveDataToDB(veranstaltung1, _col);
 
             tdc8000 = new TDC8000Parser();
+            veranstaltungToolStripMenuItem.Enabled = true;
 
         }
 
         private void ladenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) { return; }
-            
+
             _db = new LiteDatabase(openFileDialog1.FileName);
             _col = _db.GetCollection<Veranstaltung>("Veranstaltung");
             var veranstaltungsName = _col.Query().ToList()[0].VeranstaltungsName;
@@ -155,7 +154,8 @@ namespace DesktopApp
                         " in: " +
                         veranstaltung1.VeranstaltungsOrt;
 
-           UpdateGridView();
+            UpdateGridView();
+            veranstaltungToolStripMenuItem.Enabled = true;
 
 
         }
@@ -178,6 +178,18 @@ namespace DesktopApp
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedComPort = comboBox1.SelectedItem.ToString();
+        }
+
+        private void veranstaltungToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void teilnehmerVerwaltenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            teilnehmerVerwaltung = new frm_TeilnehmerVerwaltung(veranstaltung1, _col);
+            teilnehmerVerwaltung.ShowDialog();
+            _col.Update(veranstaltung1);
         }
     }
 }
