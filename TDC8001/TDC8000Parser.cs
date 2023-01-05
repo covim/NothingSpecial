@@ -25,9 +25,18 @@ namespace TDC8000
             }
         }
 
+        public TDC8000Parser()
+        {
+
+        }
+
+        public TDC8000Parser(int nextIdToPopulate)
+        {
+            Id = nextIdToPopulate;
+        }
         private static int TDC8000StringToNextRacerToFinish(string stringFromStopWatch)
         {
-            int returnStartnummer = int.Parse(stringFromStopWatch.Replace('n','0'));
+            int returnStartnummer = int.Parse(stringFromStopWatch.Replace('n', '0'));
             return returnStartnummer;
         }
 
@@ -85,7 +94,14 @@ namespace TDC8000
             subStrings = stringFromStopWatchWithoutFirst.Split(" ", 6);
             returnTriggerTime.Startnummer = int.Parse(subStrings[0]);
             returnTriggerTime.Channel = subStrings[1];
-            returnTriggerTime.TriggerTime = DateTime.ParseExact(stringFromStopWatch.Remove(22,3).Substring(10), "HH:mm:ss.ffff", System.Globalization.CultureInfo.InvariantCulture);
+            if (!subStrings[1].StartsWith("RT"))
+            {
+                returnTriggerTime.TriggerTime = DateTime.ParseExact(stringFromStopWatch.Remove(22, 3).Substring(10), "HH:mm:ss.ffff", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                returnTriggerTime.LaufZeit = TimeSpan.ParseExact(stringFromStopWatch.Remove(22, 3).Substring(10), @"hh\:mm\:ss\.ffff", System.Globalization.CultureInfo.InvariantCulture);
+            }
             Id++;
 
             return returnTriggerTime;

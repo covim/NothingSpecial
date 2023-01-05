@@ -9,45 +9,44 @@ namespace DesktopApp
 {
     public partial class Form1 : Form
     {
-        TDC8000Parser tdc8000 = new TDC8000Parser();
+        TDC8000Parser tdc8000;
         BackgroundWorker worker = new BackgroundWorker();
         bool run = false;
-        Veranstaltung veranstaltung1 = new Veranstaltung
-        {
-            Id = 1,
-            VeranstaltungsName = "SuperVeranstaltung",
-            TeilnehmerListe = new List<Teilnehmer>(),
-            TriggerTimesListe = new List<TriggerTimes>()
-        };
-        LiteDatabase db;
-        ILiteCollection<Veranstaltung> col;
+        Veranstaltung veranstaltung1;
+        ILiteDatabase _db;
+        ILiteCollection<Veranstaltung> _col;
         IEnumerable<TriggerTimes> triggerTimesList;
-        bool eins = false;
-        
+        frm_neueVeranstaltung neueVeranstaltungsDaten;
+        string selectedComPort = string.Empty;
+
+
         public Form1()
         {
             InitializeComponent();
 
             worker.WorkerReportsProgress = true;
             worker.WorkerSupportsCancellation = true;
-            System.IO.File.Delete(@"C:\Temp\MyData1.db");
-            System.IO.File.Delete(@"C:\Temp\MyData1-log.db");
-            db = new LiteDatabase(@"C:\Temp\MyData1.db");
-            col = db.GetCollection<Veranstaltung>("Veranstaltung");
-            Database.SaveDataToDB(veranstaltung1, col);
-            textBox1.Enabled= false;
+            //System.IO.File.Delete(@"C:\Temp\MyData1.db");
+            //System.IO.File.Delete(@"C:\Temp\MyData1-log.db");
+            //_db = new LiteDatabase(@"C:\Temp\MyData1.db");
+            //_col = _db.GetCollection<Veranstaltung>("Veranstaltung");
+            //Database.SaveDataToDB(veranstaltung1, _col);
+            textBox1.Enabled = false;
+            neueVeranstaltungsDaten = new frm_neueVeranstaltung();
+            comboBox1.DataSource = SerialPort.GetPortNames();
+
         }
 
         private void ReadSerialPort(object sender, DoWorkEventArgs e)
         {
-            BackgroundWorker worker = sender as BackgroundWorker;
-            SerialPort port = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+            BackgroundWorker worker1 = sender as BackgroundWorker;
+            SerialPort port = new SerialPort(selectedComPort, 9600, Parity.None, 8, StopBits.One);
             port.Open();
             while (run)
             {
                 string data = port.ReadTo("\r");
                 // Report progress to the UI
-                worker.ReportProgress(0, data);
+                worker1.ReportProgress(0, data);
             }
             port.Close();
         }
@@ -61,15 +60,10 @@ namespace DesktopApp
             if (tdc8000.TDC8000ParseManager(data))
             {
                 veranstaltung1.TriggerTimesListe.Add(tdc8000.AktuelleTriggerZeit);
-                col.Update(veranstaltung1);
+                _col.Update(veranstaltung1);
                 //triggerTimesList = col.Query().ToList()[0].TriggerTimesListe;
-                if (!eins)
-                {
-                    dataGridView1.DataSource = veranstaltung1.TriggerTimesListe;
-                    dataGridView1.AutoGenerateColumns = true;
-                    eins = true;
-                }
 
+                UpdateGridView();
             }
             else
             {
@@ -86,15 +80,6 @@ namespace DesktopApp
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -119,9 +104,80 @@ namespace DesktopApp
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ladenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            neueVeranstaltungsDaten.StartDialog();
+
+            this.Text = "Veranstaltung: " +
+                neueVeranstaltungsDaten.VeranstaltungsName +
+                " in: " +
+                neueVeranstaltungsDaten.VeranstaltungsOrt;
+
+            veranstaltung1 = new Veranstaltung
+            {
+                VeranstaltungsName = neueVeranstaltungsDaten.VeranstaltungsName,
+                VeranstaltungsOrt = neueVeranstaltungsDaten.VeranstaltungsOrt,
+                VeranstaltungsDatum = DateTime.Now,
+                TeilnehmerListe = new List<Teilnehmer>(),
+                TriggerTimesListe = new List<TriggerTimes>()
+            };
+
+            _db = new LiteDatabase(neueVeranstaltungsDaten.DbDateiPfad);
+            _col = _db.GetCollection<Veranstaltung>("Veranstaltung");
+
+            Database.SaveDataToDB(veranstaltung1, _col);
+
+            tdc8000 = new TDC8000Parser();
+
+        }
+
+        private void ladenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel) { return; }
+            
+            _db = new LiteDatabase(openFileDialog1.FileName);
+            _col = _db.GetCollection<Veranstaltung>("Veranstaltung");
+            var veranstaltungsName = _col.Query().ToList()[0].VeranstaltungsName;
+            var veranstaltungsOrt = _col.Query().ToList()[0].VeranstaltungsOrt;
+
+            veranstaltung1 = Database.ReadAllDataFromDB(_col);
+
+
+            tdc8000 = new TDC8000Parser(_col.Query().ToList()[0].TriggerTimesListe.ToList().Count + 1);
+
+            this.Text = "Veranstaltung: " +
+                        veranstaltung1.VeranstaltungsName +
+                        " in: " +
+                        veranstaltung1.VeranstaltungsOrt;
+
+           UpdateGridView();
+
+
+        }
+
+        private void UpdateGridView()
+        {
+            dataGridView1.DataSource = 1;
+            dataGridView1.DataSource = veranstaltung1.TriggerTimesListe;
+            triggerTimesList = _col.Query().ToList()[0].TriggerTimesListe;
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.Columns[3].DefaultCellStyle.Format = @"hh\:mm\:ss\.ffff";
+            dataGridView1.Columns[2].DefaultCellStyle.Format = "dd.MM.yyyy hh:mm:ss.ffff";
+            for (int i = 0; i < dataGridView1.ColumnCount; i++)
+            {
+                dataGridView1.AutoResizeColumn(i);
+            }
+            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedComPort = comboBox1.SelectedItem.ToString();
         }
     }
 }
