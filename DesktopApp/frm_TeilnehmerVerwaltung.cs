@@ -40,8 +40,6 @@ namespace DesktopApp
             dataGridView2.VirtualMode = true;
             dataGridView2.MultiSelect = false;
 
-
-
             for (int i = 0; i < dataGridView2.ColumnCount; i++)
             {
                 dataGridView2.AutoResizeColumn(i);
@@ -96,22 +94,43 @@ namespace DesktopApp
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {            
+         UpdateLaufzeitenGridView();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //dataGridView2.DataSource = 1;
-            var nix = dataGridView2.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
-            var daten = _veranstaltung.TeilnehmerListe.Find(x => x.Id.ToString() == dataGridView2.SelectedCells[0].OwningRow.Cells[0].Value.ToString()).TeilnehmerRaceTimes;
 
-            List<string> datenAsString = new List<string>();
+        }
 
-            foreach (var data in daten)
+        private void UpdateLaufzeitenGridView()
+        {
+            var startnummerSelektierterRow = dataGridView2.SelectedCells[0].OwningRow.Cells[3].Value.ToString();
+            var daten = _veranstaltung.TriggerTimesListe.FindAll(x => x.Startnummer.ToString() == startnummerSelektierterRow);
+            if (checkBox1.Checked)
             {
-                datenAsString.Add(data.ToString(@"hh\:mm\:ss\.ffff",System.Globalization.CultureInfo.InvariantCulture));
-                
+                daten = daten.FindAll(x => x.Channel.Contains("RT"));
             }
 
-            listBox1.DataSource = daten;
+            dataGridView3.DataSource = 1;
+            dataGridView3.DataSource = daten;
+            dataGridView3.AutoGenerateColumns = true;
+            dataGridView3.Columns[3].DefaultCellStyle.Format = @"hh\:mm\:ss\.ffff";
+            dataGridView3.Columns[2].DefaultCellStyle.Format = "dd.MM.yyyy hh:mm:ss.ffff";
+            for (int i = 0; i < dataGridView3.ColumnCount; i++)
+            {
+                dataGridView3.AutoResizeColumn(i);
+            }
+        }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateLaufzeitenGridView();
+        }
 
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            //UpdateLaufzeitenGridView();
         }
     }
 
