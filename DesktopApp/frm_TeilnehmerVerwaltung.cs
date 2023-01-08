@@ -22,30 +22,22 @@ namespace DesktopApp
             _veranstaltung = veranstaltung;
             _col = collection;
 
-            //var nextId = _col.Query().ToList()[0].TeilnehmerListe.ToList().Count + 1;
-            //Teilnehmer neuerTeilnehmer = new Teilnehmer { Id = nextId, Jahrgang = 1983 + nextId, Startnummer = nextId, TeilnehmerName = "Matthias" };
-            //_veranstaltung.TeilnehmerListe.Add(neuerTeilnehmer);
-            //_col.Update(_veranstaltung);
-
-            for (int i = 0; i < dataGridView2.ColumnCount; i++)
-            {
-                dataGridView2.AutoResizeColumn(i);
-            }
-
             dataGridView2.DataSource = _veranstaltung.TeilnehmerListe;
             dataGridView2.AutoGenerateColumns = true;
             dataGridView2.AllowUserToAddRows = true;
             dataGridView2.AllowUserToDeleteRows = true;
             dataGridView2.AllowUserToOrderColumns = true;
             dataGridView2.VirtualMode = true;
-            dataGridView2.MultiSelect = false;
+            dataGridView2.MultiSelect = true;
 
-            for (int i = 0; i < dataGridView2.ColumnCount; i++)
-            {
-                dataGridView2.AutoResizeColumn(i);
-            }
-            dataGridView2.Refresh();
-            dataGridView2.Update();
+            dataGridView3.AutoGenerateColumns = true;
+            dataGridView3.AllowUserToAddRows = true;
+            dataGridView3.AllowUserToDeleteRows = true;
+            dataGridView3.AllowUserToOrderColumns = true;
+            dataGridView3.VirtualMode = true;
+            dataGridView3.MultiSelect = false;
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -106,7 +98,20 @@ namespace DesktopApp
         private void UpdateLaufzeitenGridView()
         {
             var startnummerSelektierterRow = dataGridView2.SelectedCells[0].OwningRow.Cells[3].Value.ToString();
-            var daten = _veranstaltung.TriggerTimesListe.FindAll(x => x.Startnummer.ToString() == startnummerSelektierterRow);
+            
+            List<string> startNummern = new List<string>();
+            for (int i = 0; i < dataGridView2.SelectedCells.Count; i++)
+            {
+                startNummern.Add(dataGridView2.SelectedCells[i].OwningRow.Cells[3].Value.ToString());
+            }
+            List<TriggerTimes> daten = new List<TriggerTimes>();
+
+            foreach (var startnummer in startNummern)
+            {
+                daten.AddRange(_veranstaltung.TriggerTimesListe.FindAll(x => x.Startnummer.ToString() == startnummer));
+                
+            }
+            
             if (checkBox1.Checked)
             {
                 daten = daten.FindAll(x => x.Channel.Contains("RT"));
