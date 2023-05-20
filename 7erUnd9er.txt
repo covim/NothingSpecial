@@ -1,0 +1,70 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+
+\geometry{margin=2cm}
+
+\begin{document}
+
+\title{Arbeitsblatt - 7er und 9er-Malreihe}
+\author{3. Klasse Grundschule}
+\date{}
+
+\maketitle
+
+\section*{Arbeitsblatt}
+
+Name: \underline{\hspace{6cm}}
+
+\vspace{0.5cm}
+
+\begin{multicols}{2}
+    \noindent
+    \begin{enumerate}[label=\arabic*.]
+        \item 7er-Malreihe:
+        
+        \begin{tabularx}{\linewidth}{|*{3}{>{\centering\arraybackslash}X|}}
+            \hline
+            7 $\times$ 1 = & 7 $\times$ 2 = & 7 $\times$ 3 = \\
+            \hline
+            & & \\
+            \hline
+            7 $\times$ 4 = & 7 $\times$ 5 = & 7 $\times$ 6 = \\
+            \hline
+            & & \\
+            \hline
+            7 $\times$ 7 = & 7 $\times$ 8 = & 7 $\times$ 9 = \\
+            \hline
+            & & \\
+            \hline
+        \end{tabularx}
+        
+        \vspace{0.5cm}
+        
+        \item 9er-Malreihe:
+        
+        \begin{tabularx}{\linewidth}{|*{3}{>{\centering\arraybackslash}X|}}
+            \hline
+            9 $\times$ 1 = & 9 $\times$ 2 = & 9 $\times$ 3 = \\
+            \hline
+            & & \\
+            \hline
+            9 $\times$ 4 = & 9 $\times$ 5 = & 9 $\times$ 6 = \\
+            \hline
+            & & \\
+            \hline
+            9 $\times$ 7 = & 9 $\times$ 8 = & 9 $\times$ 9 = \\
+            \hline
+            & & \\
+            \hline
+        \end{tabularx}
+        
+    \end{enumerate}
+\end{multicols}
+
+\end{document}
