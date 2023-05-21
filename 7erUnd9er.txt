@@ -64,4 +64,25 @@ Name: \underline{\hspace{6cm}}
     \begin{enumerate}[label=\alph*)]
         \item 7 $\times$ \underline{\hspace{0.5cm}} = 21
         \item \underline{\hspace{0.5cm}} $\times$ 5 = 35
-       
+        \item 9 $\times$ \underline{\hspace{0.5cm}} = 63
+        \item \underline{\hspace{0.5cm}} $\
+                \item \underline{\hspace{0.5cm}} $\times$ 9 = 72
+    \end{enumerate}
+    
+    \vspace{0.5cm}
+    
+    \item Gemischte Aufgaben:
+    
+    \begin{enumerate}[label=\alph*)]
+        \item 7 $\times$ 3 = \underline{\hspace{0.5cm}}
+        \item 9 $\times$ 6 = \underline{\hspace{0.5cm}}
+        \item 7 $\times$ 8 = \underline{\hspace{0.5cm}}
+        \item 9 $\times$ 2 = \underline{\hspace{0.5cm}}
+        \item 7 $\times$ 5 = \underline{\hspace{0.5cm}}
+        \item 9 $\times$ 9 = \underline{\hspace{0.5cm}}
+    \end{enumerate}
+    
+\end{enumerate}
+
+\end{document}
+
