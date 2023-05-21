@@ -2,9 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{geometry}
-\usepackage{multicol}
-\usepackage{tabularx}
-\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
 \usepackage{enumitem}
 
 \geometry{margin=2cm}
@@ -23,48 +22,46 @@ Name: \underline{\hspace{6cm}}
 
 \vspace{0.5cm}
 
-\begin{multicols}{2}
-    \noindent
-    \begin{enumerate}[label=\arabic*.]
-        \item 7er-Malreihe:
-        
-        \begin{tabularx}{\linewidth}{|*{3}{>{\centering\arraybackslash}X|}}
-            \hline
-            7 $\times$ 1 = & 7 $\times$ 2 = & 7 $\times$ 3 = \\
-            \hline
-            & & \\
-            \hline
-            7 $\times$ 4 = & 7 $\times$ 5 = & 7 $\times$ 6 = \\
-            \hline
-            & & \\
-            \hline
-            7 $\times$ 7 = & 7 $\times$ 8 = & 7 $\times$ 9 = \\
-            \hline
-            & & \\
-            \hline
-        \end{tabularx}
-        
-        \vspace{0.5cm}
-        
-        \item 9er-Malreihe:
-        
-        \begin{tabularx}{\linewidth}{|*{3}{>{\centering\arraybackslash}X|}}
-            \hline
-            9 $\times$ 1 = & 9 $\times$ 2 = & 9 $\times$ 3 = \\
-            \hline
-            & & \\
-            \hline
-            9 $\times$ 4 = & 9 $\times$ 5 = & 9 $\times$ 6 = \\
-            \hline
-            & & \\
-            \hline
-            9 $\times$ 7 = & 9 $\times$ 8 = & 9 $\times$ 9 = \\
-            \hline
-            & & \\
-            \hline
-        \end{tabularx}
-        
-    \end{enumerate}
-\end{multicols}
-
-\end{document}
+\begin{enumerate}[label=\arabic*.]
+    \item 7er-Malreihe:
+    
+    \begin{tikzpicture}[every node/.style={minimum width=1.2cm, minimum height=0.8cm}]
+    \matrix (m) [matrix of nodes, nodes in empty cells, column sep=0.5cm, row sep=0.5cm]
+    {
+        7 $\times$ 1 = & 7 $\times$ 3 = & 7 $\times$ 2 = \\
+        & & \\
+        7 $\times$ 4 = & 7 $\times$ 6 = & 7 $\times$ 5 = \\
+        & & \\
+        7 $\times$ 7 = & 7 $\times$ 9 = & 7 $\times$ 8 = \\
+        & & \\
+    };
+    \draw (m-1-1.north west) rectangle (m-3-3.south east);
+    \draw (m-3-1.north west) rectangle (m-5-3.south east);
+    \end{tikzpicture}
+    
+    \vspace{0.5cm}
+    
+    \item 9er-Malreihe:
+    
+    \begin{tikzpicture}[every node/.style={minimum width=1.2cm, minimum height=0.8cm}]
+    \matrix (m) [matrix of nodes, nodes in empty cells, column sep=0.5cm, row sep=0.5cm]
+    {
+        9 $\times$ 1 = & 9 $\times$ 3 = & 9 $\times$ 2 = \\
+        & & \\
+        9 $\times$ 4 = & 9 $\times$ 6 = & 9 $\times$ 5 = \\
+        & & \\
+        9 $\times$ 7 = & 9 $\times$ 9 = & 9 $\times$ 8 = \\
+        & & \\
+    };
+    \draw (m-1-1.north west) rectangle (m-3-3.south east);
+    \draw (m-3-1.north west) rectangle (m-5-3.south east);
+    \end{tikzpicture}
+    
+    \vspace{0.5cm}
+    
+    \item Lücken ausfüllen:
+    
+    \begin{enumerate}[label=\alph*)]
+        \item 7 $\times$ \underline{\hspace{0.5cm}} = 21
+        \item \underline{\hspace{0.5cm}} $\times$ 5 = 35
+       
