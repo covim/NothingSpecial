@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LiteDB_Class")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6fb3cd06c11ac1636aebbbf1717b758cd8fa218f")]
 [assembly: System.Reflection.AssemblyProductAttribute("LiteDB_Class")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LiteDB_Class")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -28,180 +28,187 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.cb_TdC8000_Read = new System.Windows.Forms.CheckBox();
-            this.databaseBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ladenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ladenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.veranstaltungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.teilnehmerVerwaltenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            cb_TdC8000_Read = new CheckBox();
+            databaseBindingSource1 = new BindingSource(components);
+            databaseBindingSource = new BindingSource(components);
+            dataGridView1 = new DataGridView();
+            textBox4 = new TextBox();
+            menuStrip1 = new MenuStrip();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            ladenToolStripMenuItem = new ToolStripMenuItem();
+            ladenToolStripMenuItem1 = new ToolStripMenuItem();
+            veranstaltungToolStripMenuItem = new ToolStripMenuItem();
+            teilnehmerVerwaltenToolStripMenuItem = new ToolStripMenuItem();
+            fileSystemWatcher1 = new FileSystemWatcher();
+            openFileDialog1 = new OpenFileDialog();
+            comboBox1 = new ComboBox();
+            cBonlyRaceTimes = new CheckBox();
+            ((System.ComponentModel.ISupportInitialize)databaseBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)databaseBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
+            SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(44, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(398, 23);
-            this.textBox1.TabIndex = 0;
+            textBox1.Location = new Point(44, 46);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(398, 23);
+            textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(44, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(398, 23);
-            this.textBox2.TabIndex = 1;
+            textBox2.Location = new Point(44, 75);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(398, 23);
+            textBox2.TabIndex = 1;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(44, 104);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(398, 23);
-            this.textBox3.TabIndex = 2;
+            textBox3.Location = new Point(44, 104);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(398, 23);
+            textBox3.TabIndex = 2;
             // 
             // cb_TdC8000_Read
             // 
-            this.cb_TdC8000_Read.AutoSize = true;
-            this.cb_TdC8000_Read.Location = new System.Drawing.Point(471, 46);
-            this.cb_TdC8000_Read.Name = "cb_TdC8000_Read";
-            this.cb_TdC8000_Read.Size = new System.Drawing.Size(99, 19);
-            this.cb_TdC8000_Read.TabIndex = 3;
-            this.cb_TdC8000_Read.Text = "TdC8000 Read";
-            this.cb_TdC8000_Read.UseVisualStyleBackColor = true;
-            this.cb_TdC8000_Read.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            cb_TdC8000_Read.AutoSize = true;
+            cb_TdC8000_Read.Location = new Point(471, 77);
+            cb_TdC8000_Read.Name = "cb_TdC8000_Read";
+            cb_TdC8000_Read.Size = new Size(99, 19);
+            cb_TdC8000_Read.TabIndex = 3;
+            cb_TdC8000_Read.Text = "TdC8000 Read";
+            cb_TdC8000_Read.UseVisualStyleBackColor = true;
+            cb_TdC8000_Read.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // databaseBindingSource1
             // 
-            this.databaseBindingSource1.DataSource = typeof(LiteDB_Class.Database);
+            databaseBindingSource1.DataSource = typeof(LiteDB_Class.Database);
             // 
             // databaseBindingSource
             // 
-            this.databaseBindingSource.DataSource = typeof(LiteDB_Class.Database);
+            databaseBindingSource.DataSource = typeof(LiteDB_Class.Database);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 133);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(651, 256);
-            this.dataGridView1.TabIndex = 4;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(44, 133);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(567, 607);
+            dataGridView1.TabIndex = 4;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(44, 407);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 23);
-            this.textBox4.TabIndex = 5;
+            textBox4.Location = new Point(44, 746);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(100, 23);
+            textBox4.TabIndex = 5;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.veranstaltungToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(853, 24);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, veranstaltungToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(634, 24);
+            menuStrip1.TabIndex = 6;
+            menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ladenToolStripMenuItem,
-            this.ladenToolStripMenuItem1});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(46, 20);
-            this.toolStripMenuItem1.Text = "Datei";
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { ladenToolStripMenuItem, ladenToolStripMenuItem1 });
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(46, 20);
+            toolStripMenuItem1.Text = "Datei";
             // 
             // ladenToolStripMenuItem
             // 
-            this.ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
-            this.ladenToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.ladenToolStripMenuItem.Text = "Neu";
-            this.ladenToolStripMenuItem.Click += new System.EventHandler(this.ladenToolStripMenuItem_Click);
+            ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
+            ladenToolStripMenuItem.Size = new Size(106, 22);
+            ladenToolStripMenuItem.Text = "Neu";
+            ladenToolStripMenuItem.Click += ladenToolStripMenuItem_Click;
             // 
             // ladenToolStripMenuItem1
             // 
-            this.ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
-            this.ladenToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
-            this.ladenToolStripMenuItem1.Text = "Laden";
-            this.ladenToolStripMenuItem1.Click += new System.EventHandler(this.ladenToolStripMenuItem1_Click);
+            ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
+            ladenToolStripMenuItem1.Size = new Size(106, 22);
+            ladenToolStripMenuItem1.Text = "Laden";
+            ladenToolStripMenuItem1.Click += ladenToolStripMenuItem1_Click;
             // 
             // veranstaltungToolStripMenuItem
             // 
-            this.veranstaltungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.teilnehmerVerwaltenToolStripMenuItem});
-            this.veranstaltungToolStripMenuItem.Name = "veranstaltungToolStripMenuItem";
-            this.veranstaltungToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.veranstaltungToolStripMenuItem.Text = "Veranstaltung";
-            this.veranstaltungToolStripMenuItem.Click += new System.EventHandler(this.veranstaltungToolStripMenuItem_Click);
+            veranstaltungToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { teilnehmerVerwaltenToolStripMenuItem });
+            veranstaltungToolStripMenuItem.Name = "veranstaltungToolStripMenuItem";
+            veranstaltungToolStripMenuItem.Size = new Size(91, 20);
+            veranstaltungToolStripMenuItem.Text = "Veranstaltung";
+            veranstaltungToolStripMenuItem.Click += veranstaltungToolStripMenuItem_Click;
             // 
             // teilnehmerVerwaltenToolStripMenuItem
             // 
-            this.teilnehmerVerwaltenToolStripMenuItem.Name = "teilnehmerVerwaltenToolStripMenuItem";
-            this.teilnehmerVerwaltenToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.teilnehmerVerwaltenToolStripMenuItem.Text = "TeilnehmerVerwalten";
-            this.teilnehmerVerwaltenToolStripMenuItem.Click += new System.EventHandler(this.teilnehmerVerwaltenToolStripMenuItem_Click);
+            teilnehmerVerwaltenToolStripMenuItem.Name = "teilnehmerVerwaltenToolStripMenuItem";
+            teilnehmerVerwaltenToolStripMenuItem.Size = new Size(183, 22);
+            teilnehmerVerwaltenToolStripMenuItem.Text = "TeilnehmerVerwalten";
+            teilnehmerVerwaltenToolStripMenuItem.Click += teilnehmerVerwaltenToolStripMenuItem_Click;
             // 
             // fileSystemWatcher1
             // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
+            fileSystemWatcher1.EnableRaisingEvents = true;
+            fileSystemWatcher1.SynchronizingObject = this;
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(576, 44);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(471, 46);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 7;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // cBonlyRaceTimes
+            // 
+            cBonlyRaceTimes.AutoSize = true;
+            cBonlyRaceTimes.Location = new Point(471, 106);
+            cBonlyRaceTimes.Name = "cBonlyRaceTimes";
+            cBonlyRaceTimes.Size = new Size(140, 19);
+            cBonlyRaceTimes.TabIndex = 8;
+            cBonlyRaceTimes.Text = "Show only RaceTimes";
+            cBonlyRaceTimes.UseVisualStyleBackColor = true;
+            cBonlyRaceTimes.CheckedChanged += cBonlyRaceTimes_CheckedChanged;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 499);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.cb_TdC8000_Read);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.databaseBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(634, 781);
+            Controls.Add(cBonlyRaceTimes);
+            Controls.Add(comboBox1);
+            Controls.Add(textBox4);
+            Controls.Add(dataGridView1);
+            Controls.Add(cb_TdC8000_Read);
+            Controls.Add(textBox3);
+            Controls.Add(textBox2);
+            Controls.Add(textBox1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "Form1";
+            Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)databaseBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)databaseBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -223,5 +230,6 @@
         private ComboBox comboBox1;
         private ToolStripMenuItem veranstaltungToolStripMenuItem;
         private ToolStripMenuItem teilnehmerVerwaltenToolStripMenuItem;
+        private CheckBox cBonlyRaceTimes;
     }
 }

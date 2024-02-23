@@ -30,8 +30,27 @@ namespace DesktopApp
             textBox1.Enabled = false;
             veranstaltungToolStripMenuItem.Enabled = false;
             neueVeranstaltungsDaten = new frm_neueVeranstaltung();
-            
+
             comboBox1.DataSource = SerialPort.GetPortNames();
+
+            string defaultPfad = @"c:\temp\DefaultLightDb.db";
+
+            if (File.Exists(defaultPfad)) { File.Delete(defaultPfad); }
+
+            veranstaltung1 = new Veranstaltung
+            {
+                VeranstaltungsName = "DefaultVeranstaltung",
+                VeranstaltungsOrt = "DefaultOrt",
+                VeranstaltungsDatum = DateTime.Now,
+                TeilnehmerListe = new List<Teilnehmer>(),
+                TriggerTimesListe = new List<TriggerTimes>()
+            };
+
+            _db = new LiteDatabase(defaultPfad);
+            _col = _db.GetCollection<Veranstaltung>("DefaultVeranstaltung");
+
+            Database.SaveDataToDB(veranstaltung1, _col);
+            tdc8000 = new TDC8000Parser();
 
         }
 
@@ -104,7 +123,7 @@ namespace DesktopApp
 
         private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ladenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,7 +149,7 @@ namespace DesktopApp
 
             Database.SaveDataToDB(veranstaltung1, _col);
 
-            tdc8000 = new TDC8000Parser();
+            
             veranstaltungToolStripMenuItem.Enabled = true;
 
         }
@@ -163,16 +182,27 @@ namespace DesktopApp
         private void UpdateGridView()
         {
             dataGridView1.DataSource = 1;
-            dataGridView1.DataSource = veranstaltung1.TriggerTimesListe;
+            var listToShow = veranstaltung1.TriggerTimesListe.Where(x => x.Channel.Contains("RT")).ToList();
+            if (cBonlyRaceTimes.Checked == false)
+            {
+                dataGridView1.DataSource = veranstaltung1.TriggerTimesListe;
+            }
+            else
+            {
+                dataGridView1.DataSource = listToShow;
+            }
             triggerTimesList = _col.Query().ToList()[0].TriggerTimesListe;
             dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.Columns[3].DefaultCellStyle.Format = @"hh\:mm\:ss\.ffff";
+            dataGridView1.Columns[3].DefaultCellStyle.Format = @"mm\:ss\.ffff";
             dataGridView1.Columns[2].DefaultCellStyle.Format = "dd.MM.yyyy hh:mm:ss.ffff";
             for (int i = 0; i < dataGridView1.ColumnCount; i++)
             {
                 dataGridView1.AutoResizeColumn(i);
             }
-            dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
+            if (listToShow.Count() != 0)
+            {
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -188,8 +218,20 @@ namespace DesktopApp
         private void teilnehmerVerwaltenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             teilnehmerVerwaltung = new frm_TeilnehmerVerwaltung(veranstaltung1, _col);
-            teilnehmerVerwaltung.ShowDialog();
+            try
+            {
+                teilnehmerVerwaltung.ShowDialog();
+            }
+            catch (Exception)
+            {
+
+            }
             _col.Update(veranstaltung1);
+        }
+
+        private void cBonlyRaceTimes_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateGridView();
         }
     }
 }

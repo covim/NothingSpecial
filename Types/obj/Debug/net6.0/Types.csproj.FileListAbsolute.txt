@@ -10,3 +10,4 @@ C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.dll
 C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\refint\Types.dll
 C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.pdb
 C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\ref\Types.dll
+C:\myCode\Repos\NothingSpecial\Types\obj\Debug\net6.0\Types.sourcelink.json

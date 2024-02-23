@@ -25,7 +25,7 @@ namespace DesktopApp
         {
             textBox1.Text = "TestVeranstaltung";
             textBox2.Text = "TestOrt";
-            textBox3.Text = @"C:\temp\Test.db";
+            textBox3.Text = @"C:\temp\Test765.db";
 
             return ShowDialog();
         }

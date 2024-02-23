@@ -86,8 +86,8 @@ namespace DesktopApp
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {            
-         UpdateLaufzeitenGridView();
+        {
+            UpdateLaufzeitenGridView();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -98,7 +98,7 @@ namespace DesktopApp
         private void UpdateLaufzeitenGridView()
         {
             var startnummerSelektierterRow = dataGridView2.SelectedCells[0].OwningRow.Cells[3].Value.ToString();
-            
+
             List<string> startNummern = new List<string>();
             for (int i = 0; i < dataGridView2.SelectedCells.Count; i++)
             {
@@ -109,9 +109,9 @@ namespace DesktopApp
             foreach (var startnummer in startNummern)
             {
                 daten.AddRange(_veranstaltung.TriggerTimesListe.FindAll(x => x.Startnummer.ToString() == startnummer));
-                
+
             }
-            
+
             if (checkBox1.Checked)
             {
                 daten = daten.FindAll(x => x.Channel.Contains("RT"));

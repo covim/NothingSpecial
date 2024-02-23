@@ -33,3 +33,4 @@ C:\myCode\Repos\NothingSpecial\DesktopApp\bin\Debug\net6.0-windows\LiteDB_Class.
 C:\myCode\Repos\NothingSpecial\DesktopApp\bin\Debug\net6.0-windows\LiteDB_Class.pdb
 C:\myCode\Repos\NothingSpecial\DesktopApp\obj\Debug\net6.0-windows\DesktopApp.frm_NeueVeranstaltung.resources
 C:\myCode\Repos\NothingSpecial\DesktopApp\obj\Debug\net6.0-windows\DesktopApp.frm_TeilnehmerVerwaltung.resources
+C:\myCode\Repos\NothingSpecial\DesktopApp\obj\Debug\net6.0-windows\DesktopApp.sourcelink.json

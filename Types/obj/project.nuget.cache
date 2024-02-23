@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FBeBAzRFadGeEqXefmK1F8x12pj1T7pucrG//B69LIt522sx78PkSuQygXp7Gs1wFpXtLwNx3TfGy63sR697Jw==",
+  "dgSpecHash": "ox6fUMsRANC51IV0Tm/W02Ky0WRyKRbiTyASduvEvb1o24hpZ3CgGLW13NDrlIKIKogh4dbjJgqrA1PXzeHKLQ==",
   "success": true,
   "projectFilePath": "C:\\myCode\\Repos\\NothingSpecial\\Types\\Types.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\User\\.nuget\\packages\\litedb\\5.0.15\\litedb.5.0.15.nupkg.sha512"
+    "C:\\Users\\matthias.covi\\.nuget\\packages\\litedb\\5.0.15\\litedb.5.0.15.nupkg.sha512"
   ],
   "logs": []
 }

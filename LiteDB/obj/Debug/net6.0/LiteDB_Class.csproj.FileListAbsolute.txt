@@ -13,3 +13,4 @@ C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.dll
 C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\refint\LiteDB_Class.dll
 C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.pdb
 C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\ref\LiteDB_Class.dll
+C:\myCode\Repos\NothingSpecial\LiteDB\obj\Debug\net6.0\LiteDB_Class.sourcelink.json
