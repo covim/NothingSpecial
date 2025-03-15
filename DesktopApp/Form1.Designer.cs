@@ -41,17 +41,22 @@
             toolStripMenuItem1 = new ToolStripMenuItem();
             ladenToolStripMenuItem = new ToolStripMenuItem();
             ladenToolStripMenuItem1 = new ToolStripMenuItem();
+            readCSVToolStripMenuItem = new ToolStripMenuItem();
             veranstaltungToolStripMenuItem = new ToolStripMenuItem();
             teilnehmerVerwaltenToolStripMenuItem = new ToolStripMenuItem();
             fileSystemWatcher1 = new FileSystemWatcher();
             openFileDialog1 = new OpenFileDialog();
             comboBox1 = new ComboBox();
             cBonlyRaceTimes = new CheckBox();
+            label1 = new Label();
+            label2 = new Label();
+            dataGridView2 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)databaseBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)databaseBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // textBox1
@@ -97,10 +102,9 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(44, 133);
+            dataGridView1.Location = new Point(44, 345);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(567, 607);
+            dataGridView1.Size = new Size(567, 381);
             dataGridView1.TabIndex = 4;
             // 
             // textBox4
@@ -121,7 +125,7 @@
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { ladenToolStripMenuItem, ladenToolStripMenuItem1 });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { ladenToolStripMenuItem, ladenToolStripMenuItem1, readCSVToolStripMenuItem });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(46, 20);
             toolStripMenuItem1.Text = "Datei";
@@ -129,16 +133,23 @@
             // ladenToolStripMenuItem
             // 
             ladenToolStripMenuItem.Name = "ladenToolStripMenuItem";
-            ladenToolStripMenuItem.Size = new Size(106, 22);
+            ladenToolStripMenuItem.Size = new Size(124, 22);
             ladenToolStripMenuItem.Text = "Neu";
             ladenToolStripMenuItem.Click += ladenToolStripMenuItem_Click;
             // 
             // ladenToolStripMenuItem1
             // 
             ladenToolStripMenuItem1.Name = "ladenToolStripMenuItem1";
-            ladenToolStripMenuItem1.Size = new Size(106, 22);
+            ladenToolStripMenuItem1.Size = new Size(124, 22);
             ladenToolStripMenuItem1.Text = "Laden";
             ladenToolStripMenuItem1.Click += ladenToolStripMenuItem1_Click;
+            // 
+            // readCSVToolStripMenuItem
+            // 
+            readCSVToolStripMenuItem.Name = "readCSVToolStripMenuItem";
+            readCSVToolStripMenuItem.Size = new Size(124, 22);
+            readCSVToolStripMenuItem.Text = "Read CSV";
+            readCSVToolStripMenuItem.Click += readCSVToolStripMenuItem_Click;
             // 
             // veranstaltungToolStripMenuItem
             // 
@@ -184,11 +195,41 @@
             cBonlyRaceTimes.UseVisualStyleBackColor = true;
             cBonlyRaceTimes.CheckedChanged += cBonlyRaceTimes_CheckedChanged;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(44, 327);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 15);
+            label1.TabIndex = 9;
+            label1.Text = "Laufzeiten";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(44, 151);
+            label2.Name = "label2";
+            label2.Size = new Size(87, 15);
+            label2.TabIndex = 10;
+            label2.Text = "Auf der Strecke";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(44, 169);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(567, 145);
+            dataGridView2.TabIndex = 11;
+            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(634, 781);
+            Controls.Add(dataGridView2);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(cBonlyRaceTimes);
             Controls.Add(comboBox1);
             Controls.Add(textBox4);
@@ -207,6 +248,7 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -231,5 +273,9 @@
         private ToolStripMenuItem veranstaltungToolStripMenuItem;
         private ToolStripMenuItem teilnehmerVerwaltenToolStripMenuItem;
         private CheckBox cBonlyRaceTimes;
+        private ToolStripMenuItem readCSVToolStripMenuItem;
+        private Label label1;
+        private Label label2;
+        private DataGridView dataGridView2;
     }
 }

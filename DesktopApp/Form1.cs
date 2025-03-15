@@ -19,11 +19,16 @@ namespace DesktopApp
         frm_neueVeranstaltung neueVeranstaltungsDaten;
         frm_TeilnehmerVerwaltung teilnehmerVerwaltung;
         string selectedComPort = string.Empty;
+        private int rowCount = 0;
+        private Dictionary<int, TimerRow> timerRows = new Dictionary<int, TimerRow>();
 
 
         public Form1()
         {
             InitializeComponent();
+
+            dataGridView2.Columns.Add("Nummer", "Nummer");
+            dataGridView2.Columns.Add("Zeit", "Zeit (mm:ss.zh)");
 
             worker.WorkerReportsProgress = true;
             worker.WorkerSupportsCancellation = true;
@@ -79,6 +84,14 @@ namespace DesktopApp
                 veranstaltung1.TriggerTimesListe.Add(tdc8000.AktuelleTriggerZeit);
                 _col.Update(veranstaltung1);
                 //triggerTimesList = col.Query().ToList()[0].TriggerTimesListe;
+                if (tdc8000.AktuelleTriggerZeit != null && tdc8000.AktuelleTriggerZeit.Channel.Contains("C0"))
+                {
+                    AddAufDerStrecke(tdc8000.AktuelleTriggerZeit.Startnummer);
+                }
+                if (tdc8000.AktuelleTriggerZeit != null && tdc8000.AktuelleTriggerZeit.Channel.Contains("RT"))
+                {
+                    RemoveRowByNumber(tdc8000.AktuelleTriggerZeit.Startnummer);
+                }
 
                 UpdateGridView();
             }
@@ -95,6 +108,30 @@ namespace DesktopApp
 
             textBox4.Text = veranstaltung1.TriggerTimesListe.Count.ToString();
 
+        }
+
+        private void RemoveRowByNumber(int rowNumber)
+        {
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out int currentNumber))
+                {
+                    if (currentNumber == rowNumber)
+                    {
+                        // Timer stoppen und entfernen
+                        if (timerRows.ContainsKey(rowNumber))
+                        {
+                            timerRows[rowNumber].Stop();
+                            timerRows.Remove(rowNumber);
+                        }
+
+                        dataGridView2.Rows.Remove(row);
+                        return;
+                    }
+                }
+            }
+
+            MessageBox.Show("Nummer nicht gefunden!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
 
@@ -149,7 +186,7 @@ namespace DesktopApp
 
             Database.SaveDataToDB(veranstaltung1, _col);
 
-            
+
             veranstaltungToolStripMenuItem.Enabled = true;
 
         }
@@ -182,7 +219,7 @@ namespace DesktopApp
         private void UpdateGridView()
         {
             dataGridView1.DataSource = 1;
-            var listToShow = veranstaltung1.TriggerTimesListe.Where(x => x.Channel.Contains("RT")).ToList();
+            var listToShow = veranstaltung1.TriggerTimesListe;//.Where(x => x.Channel.Contains("RT")).ToList();
             if (cBonlyRaceTimes.Checked == false)
             {
                 dataGridView1.DataSource = veranstaltung1.TriggerTimesListe;
@@ -232,6 +269,83 @@ namespace DesktopApp
         private void cBonlyRaceTimes_CheckedChanged(object sender, EventArgs e)
         {
             UpdateGridView();
+        }
+
+        private void readCSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel) { return; }
+
+            veranstaltung1.TeilnehmerListe = veranstaltung1.LeseTeilnehmerAusExcel(openFileDialog1.FileName);
+            _col.Update(veranstaltung1);
+            MessageBox.Show(openFileDialog1.FileName);
+        }
+
+
+        private void AddAufDerStrecke(int startNummer)
+        {
+
+            rowCount++;
+            int rowIndex = dataGridView2.Rows.Add(startNummer, "00:00.0");
+            TimerRow timerRow = new TimerRow(rowCount, dataGridView2);
+            timerRows[rowCount] = timerRow;
+
+        }
+
+        public class TimerRow
+        {
+            private int rowNumber;
+            private int timeValue;
+            private System.Windows.Forms.Timer timer;
+            private DataGridView gridView;
+
+            public TimerRow(int rowNumber, DataGridView gridView)
+            {
+                this.rowNumber = rowNumber;
+                this.gridView = gridView;
+                this.timeValue = 0;
+
+                timer = new System.Windows.Forms.Timer();
+                timer.Interval = 100; // 100ms = 1 Zehntelsekunde
+                timer.Tick += TimerTick;
+                timer.Start();
+            }
+
+            private void TimerTick(object sender, EventArgs e)
+            {
+                timeValue++; // Zehntelsekunden hochzählen
+                string formattedTime = FormatTime(timeValue);
+
+                foreach (DataGridViewRow row in gridView.Rows)
+                {
+                    if (row.Cells[0].Value != null && int.TryParse(row.Cells[0].Value.ToString(), out int currentNumber))
+                    {
+                        if (currentNumber == rowNumber)
+                        {
+                            row.Cells[1].Value = formattedTime;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            public void Stop()
+            {
+                timer.Stop();
+            }
+
+            private string FormatTime(int totalTenths)
+            {
+                int minutes = totalTenths / 600;
+                int seconds = (totalTenths / 10) % 60;
+                int tenths = totalTenths % 10;
+                return $"{minutes:D2}:{seconds:D2}.{tenths}";
+            }
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

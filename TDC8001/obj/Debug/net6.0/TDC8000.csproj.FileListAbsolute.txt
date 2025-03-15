@@ -8,9 +8,9 @@ C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.GeneratedMSBuild
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.AssemblyInfoInputs.cache
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.AssemblyInfo.cs
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.csproj.CoreCompileInputs.cache
-C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.csproj.CopyComplete
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.dll
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\refint\TDC8000.dll
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.pdb
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\ref\TDC8000.dll
 C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.sourcelink.json
+C:\myCode\Repos\NothingSpecial\TDC8001\obj\Debug\net6.0\TDC8000.csproj.Up2Date

@@ -96,11 +96,13 @@ namespace TDC8000
             returnTriggerTime.Channel = subStrings[1];
             if (!subStrings[1].StartsWith("RT"))
             {
-                returnTriggerTime.TriggerTime = DateTime.ParseExact(stringFromStopWatch.Remove(22, 3).Substring(10), "HH:mm:ss.ffff", System.Globalization.CultureInfo.InvariantCulture);
+                var testc = stringFromStopWatch.Remove(22, 3).Substring(10).Trim();
+                returnTriggerTime.TriggerTime = DateTime.ParseExact(stringFromStopWatch.Remove(22, 3).Substring(10).Trim(), "HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
             }
             else
             {
-                returnTriggerTime.LaufZeit = TimeSpan.ParseExact(stringFromStopWatch.Remove(22, 3).Substring(10), @"hh\:mm\:ss\.ffff", System.Globalization.CultureInfo.InvariantCulture);
+                var testb = stringFromStopWatch.Remove(22, 3).Substring(10).Trim();
+                returnTriggerTime.LaufZeit = TimeSpan.ParseExact(stringFromStopWatch.Remove(22, 3).Substring(10).Trim(), @"hh\:mm\:ss\.fff", System.Globalization.CultureInfo.InvariantCulture);
             }
             Id++;
 

@@ -12,27 +12,12 @@ namespace Types
         public string TeilnehmerName { get; set; }
         public int Jahrgang { get; set; }
         public int Startnummer { get; set; }
+        public string Klasse { get; set; }
+        public string Verein { get; set; }
         public List<TimeSpan> TeilnehmerRaceTimes { get; set; } = new List<TimeSpan>();
 
         public static void UpdateRaceTimes(List<TriggerTimes> triggerTimes, List<Teilnehmer> teilnehmers)
         {
-            //var zielZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C1") && x.Status == "normal").ToList();
-            //var startZeiten = triggerTimes.FindAll(x => x.Channel.Contains("C0") && x.Status == "normal").ToList();
-
-            //foreach (var teilnehmer in teilnehmers)
-            //{
-            //    var startnummer = teilnehmer.Startnummer;
-            //    var zielzeitFuerStartnummer = zielZeiten.FindAll(x => x.Startnummer == startnummer);
-            //    var startzeitfuerStartnummer = startZeiten.FindAll(x => x.Startnummer == startnummer);
-
-            //    if (zielzeitFuerStartnummer.Count == 1 && startzeitfuerStartnummer.Count == 1)
-            //    {
-            //        var raceTime = new TimeSpan();
-            //        raceTime = zielzeitFuerStartnummer[0].TriggerTime - startzeitfuerStartnummer[0].TriggerTime;
-            //        teilnehmer.TeilnehmerRaceTimes.Add(raceTime);
-            //    }
-            //}
-
             var alleLaufZeiten = triggerTimes.FindAll(x => x.Channel.Contains("RT") && x.Status == "normal").ToList();
             foreach (var teilnehmer in teilnehmers)
             {
